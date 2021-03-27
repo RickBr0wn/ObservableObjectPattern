@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct ObservableObjectPatternApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }
