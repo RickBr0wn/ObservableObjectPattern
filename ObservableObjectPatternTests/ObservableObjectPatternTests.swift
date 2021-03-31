@@ -9,25 +9,35 @@ import XCTest
 @testable import ObservableObjectPattern
 
 class ObservableObjectPatternTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+  var viewModel: ViewModel!
+  
+  override func setUpWithError() throws {
+    viewModel = ViewModel()
+  }
+  
+  override func tearDownWithError() throws {
+    viewModel = nil
+  }
+  
+  func testIncrementAndDecrementFunctions() throws {
+    XCTAssertEqual(viewModel.counter, .zero)
+    viewModel.increment(by: 5)
+    XCTAssertEqual(viewModel.counter, 5)
+    viewModel.decrement(by: 5)
+    XCTAssertEqual(viewModel.counter, .zero)
+  }
+  
+  func testDisplayedUserName() throws {
+    XCTAssertEqual(viewModel.counter, .zero)
+    XCTAssertEqual(viewModel.currentName, "rick")
+    viewModel.increment(by: 2)
+    XCTAssertEqual(viewModel.currentName, "lilly")
+    viewModel.increment(by: 5)
+    XCTAssertEqual(viewModel.currentName, "no more names")
+  }
+  
+  func testPerformanceExample() throws {
+    self.measure {}
+  }
+  
 }
